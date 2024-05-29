@@ -1,13 +1,16 @@
 import Dropdown from "@/components/Dropdown";
 import RoundBtn from "@/components/RoundBtn";
+import WidgetList from "@/components/SortableList/WidgetList";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { useBalanceStore } from "@/store/balanceStore";
 import { Ionicons } from "@expo/vector-icons";
 import { ScrollView, StyleSheet, Text, View } from "react-native"
+import { useHeaderHeight } from "@react-navigation/elements"
 
 const Home = () => {
   const { balance, runTransaction, transactions, clearTransactions } = useBalanceStore()
+  const headerHeight = useHeaderHeight()
 
   const onAddMoney = () => {
     runTransaction({
@@ -20,7 +23,11 @@ const Home = () => {
 
 
   return (
-    <ScrollView style={{ backgroundColor: Colors.background }}>
+    <ScrollView
+      style={{ backgroundColor: Colors.background }}
+      contentContainerStyle={{
+        paddingTop: headerHeight
+      }}>
       <View style={styles.account}>
         <View style={styles.row}>
           <Text style={styles.balance}>{balance()}</Text>
@@ -49,13 +56,16 @@ const Home = () => {
             </View>
 
             <View style={{ flex: 1 }}>
-              <Text style={{ fontWeight: '450' }}>{transaction.title}</Text>
+              <Text style={{ fontWeight: '400' }}>{transaction.title}</Text>
               <Text style={{ color: Colors.gray, fontSize: 12 }}>{transaction.date.toLocaleString()}</Text>
             </View>
             <Text>{transaction.amount}</Text>
           </View>
         ))}
       </View>
+
+      <Text style={defaultStyles.sectionHeader}>Widgets</Text>
+      {/* <WidgetList /> */}
     </ScrollView>
   )
 }
