@@ -72,7 +72,7 @@ export const InitialLayout = () => {
     const inAuthGroup = segments[0] === '(authenticated)'
 
     if (isSignedIn && !inAuthGroup) {
-      router.replace('/(authenticated)/(modals)/lock')
+      router.replace('/(authenticated)/(tabs)/home')
     } else if (!isSignedIn) {
       router.replace('/')
     }
@@ -144,6 +144,14 @@ export const InitialLayout = () => {
       }} />
       <Stack.Screen name="(authenticated)/(modals)/lock" options={{
         headerShown: false, animation: 'none'
+      }} />
+      <Stack.Screen name="(authenticated)/(modals)/account" options={{
+        presentation: 'transparentModal', animation: 'fade', title: '', headerTransparent: true,
+        headerLeft: () => (
+          <TouchableOpacity onPress={router.back}>
+            <Ionicons name='close-outline' size={34} color={'#fff'} />
+          </TouchableOpacity>
+        )
       }} />
     </Stack>
   )
