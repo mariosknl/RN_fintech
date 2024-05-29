@@ -65,7 +65,7 @@ const Home = () => {
       </View>
 
       <Text style={defaultStyles.sectionHeader}>Widgets</Text>
-      {/* <WidgetList /> */}
+      <WidgetList />
     </ScrollView>
   )
 }
