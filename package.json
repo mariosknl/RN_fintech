@@ -15,6 +15,7 @@
   "dependencies": {
     "@clerk/clerk-expo": "^1.1.8",
     "@expo/vector-icons": "^14.0.0",
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native": "^6.0.2",
     "@shopify/react-native-skia": "^1.3.1",
     "@tanstack/react-query": "^5.40.0",
@@ -48,7 +49,7 @@
     "victory-native": "^40.2.1",
     "zeego": "^1.10.0",
     "zustand": "^4.5.2",
-    "@react-native-async-storage/async-storage": "1.23.1"
+    "expo-local-authentication": "~14.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
