@@ -7,7 +7,7 @@ import { Link, Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import "react-native-reanimated";
 import * as SecureStore from "expo-secure-store";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -118,6 +118,26 @@ export const InitialLayout = () => {
       }} />
 
       <Stack.Screen name='(authenticated)/(tabs)' options={{ headerShown: false }} />
+      <Stack.Screen name='(authenticated)/crypto/[id]' options={{
+        title: '',
+        headerLeft: () => (
+          <TouchableOpacity onPress={router.back}>
+            <Ionicons name='arrow-back' size={34} color={Colors.dark} />
+          </TouchableOpacity>
+        ),
+        headerLargeTitle: true,
+        headerTransparent: true,
+        headerRight: () => (
+          <View style={{ flexDirection: 'row', gap: 10 }}>
+            <TouchableOpacity>
+              <Ionicons name='notifications-outline' size={30} color={Colors.dark} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Ionicons name='star-outline' size={30} color={Colors.dark} />
+            </TouchableOpacity>
+          </View>
+        )
+      }} />
 
     </Stack>
   )
